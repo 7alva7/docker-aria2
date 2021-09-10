@@ -20,6 +20,7 @@ COPY --from=builder /usr/local/bin/aria2c /usr/local/bin/aria2c
 # permissions
 RUN apk add --no-cache curl jq findutils \
 && chmod a+x /usr/local/bin/aria2c \
+&& echo "docker-aria2-$(date +"%Y-%m-%d")" > /aria2/build-date \
 && rm -rf /var/cache/apk/* /tmp/*
 
 VOLUME /config /downloads
